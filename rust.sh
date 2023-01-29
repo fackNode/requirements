@@ -15,3 +15,8 @@ else
   # Add rust to PATH
   . $HOME/.cargo/env
 fi
+
+if command -v rustc &> /dev/null; then
+  echo "rust installed successfully."
+else
+   echo "An error occurred while installing docker-compose."
