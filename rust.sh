@@ -1,9 +1,12 @@
 #!/bin/bash
 
-echo "Rust installation"
+fmt=`tput setaf 45`
+end="\e[0m\n"
+err="\e[31m"
+scss="\e[32m"
 
 if command -v rustc &> /dev/null; then
-  echo "Rust is already installed."
+  echo -e "${fmt}\nRust is already installed.${end}" && sleep 1
 else
   # Update package list
   sudo apt update
@@ -19,6 +22,6 @@ else
 fi
 
 if command -v rustc &> /dev/null; then
-  echo "rust installed successfully."
+  echo -e "${fmt}\nrust installed successfully.${end}" && sleep 1
 else
-  echo "An error occurred while installing docker-compose."
+  echo -e "${err}\nAn error occurred while installing docker-compose.${end}" && sleep 1
