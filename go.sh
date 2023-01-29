@@ -1,16 +1,21 @@
 #!/bin/bash -x
 
-echo "GO installation"
+fmt=`tput setaf 45`
+end="\e[0m\n"
+err="\e[31m"
+scss="\e[32m"
+
+echo -e "${fmt}\nGO installation${end}" && sleep 1
 
 CMD="command -v go"
 if $CMD &> /dev/null; then
-  echo "Go is already installed."
+  echo -e "${fmt}\nGo is already installed.${end}" && sleep 1
 else
   # Update package list
   CMD="sudo apt update"
   $CMD
   if [ $? -ne 0 ]; then
-    echo "Failed to update package list."
+     echo -e "${err}\nFailed to update package list.${end}" && sleep 1
     exit 1
   fi
   
@@ -18,7 +23,7 @@ else
   CMD="sudo apt install build-essential -y"
   $CMD
   if [ $? -ne 0 ]; then
-    echo "Failed to install build-essential."
+    echo -e "${err}\nFailed to install build-essential.${end}" && sleep 1
     exit 1
   fi
   
@@ -27,7 +32,7 @@ else
   CMD="sudo wget https://golang.org/dl/go$ver.linux-amd64.tar.gz"
   $CMD
   if [ $? -ne 0 ]; then
-    echo "Failed to download Go."
+    echo -e "${err}\nFailed to download Go.${end}" && sleep 1
     exit 1
   fi
   CMD="sudo rm -rf /usr/local/go"
@@ -35,7 +40,7 @@ else
   CMD="sudo tar -C /usr/local -xzf go$ver.linux-amd64.tar.gz"
   $CMD
   if [ $? -ne 0 ]; then
-    echo "Failed to extract Go."
+    echo -e "${err}\nFailed to extract Go.${end}" && sleep 1
     exit 1
   fi
   CMD="sudo rm go$ver.linux-amd64.tar.gz"
@@ -45,7 +50,7 @@ fi
   # Check
 CMD="command -v go"
 if $CMD &> /dev/null; then
-  echo "Go installed successfully."
+  echo -e "${fmt}\nGo installed successfully.${end}" && sleep 1
 else
-  echo "An error occurred while installing GO."
+  echo -e "${err}\nAn error occurred while installing GO.${end}" && sleep 1
 fi
