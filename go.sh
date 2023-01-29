@@ -10,11 +10,11 @@ else
   sudo apt install build-essential -y
   
   cd $HOME
-  ver="1.19.2"
-  wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+  export ver="1.19.2"
+  sudo wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
   sudo rm -rf /usr/local/go
   sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
-  rm "go$ver.linux-amd64.tar.gz"
+  sudo rm "go$ver.linux-amd64.tar.gz"
   echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
 fi
   # Check
