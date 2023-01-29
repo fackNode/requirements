@@ -1,6 +1,11 @@
 #!/bin/bash
 
-echo "docker and docker-compose installation"
+fmt=`tput setaf 45`
+end="\e[0m\n"
+err="\e[31m"
+scss="\e[32m"
+
+echo -e "${fmt}\ndocker and docker-compose installation${end}" && sleep 1
 
 cd $HOME
 sudo apt update
@@ -16,9 +21,9 @@ if ! docker --version; then
 fi
 
 if docker --version; then
-  echo "docker installed successfully."
+  echo -e "${fmt}\ndocker installed successfully.${end}" && sleep 1
 else
-  echo "An error occurred while installing Docker."
+  echo -e "${err}\An error occurred while installing Docker.${end}" && sleep 1
   exit 1
 fi
 
@@ -30,7 +35,7 @@ if ! docker-compose --version; then
 fi
 
 if docker-compose --version; then
-  echo "docker-compose installed successfully."
+  echo -e "${fmt}\ndocker-compose installed successfully.${end}" && sleep 1
 else
-  echo "An error occurred while installing docker-compose."
+  echo -e "${err}\An error occurred while installing docker-compose.${end}" && sleep 1
 fi
