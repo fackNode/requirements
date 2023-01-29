@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "docker and docker-compose installation"
 
 cd $HOME
