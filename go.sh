@@ -1,29 +1,55 @@
-#!/bin/bash
+#!/bin/bash -x
 
-if command -v go &> /dev/null; then
+CMD="command -v go"
+if $CMD &> /dev/null; then
   echo "Go is already installed."
-  exit 0
+else
+  # Update package list
+  CMD="sudo apt update"
+  $CMD
+  echo "Command '$CMD' returned $?"
+  if [ $? -ne 0 ]; then
+    echo "Failed to update package list."
+    exit 1
+  fi
+  
+  # Install dependencies
+  CMD="sudo apt install build-essential -y"
+  $CMD
+  echo "Command '$CMD' returned $?"
+  if [ $? -ne 0 ]; then
+    echo "Failed to install build-essential."
+    exit 1
+  fi
+  
+  cd $HOME
+  export ver="1.19.2"
+  CMD="sudo wget https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+  $CMD
+  echo "Command '$CMD' returned $?"
+  if [ $? -ne 0 ]; then
+    echo "Failed to download Go."
+    exit 1
+  fi
+  CMD="sudo rm -rf /usr/local/go"
+  $CMD
+  echo "Command '$CMD' returned $?"
+  CMD="sudo tar -C /usr/local -xzf go$ver.linux-amd64.tar.gz"
+  $CMD
+  echo "Command '$CMD' returned $?"
+  if [ $? -ne 0 ]; then
+    echo "Failed to extract Go."
+    exit 1
+  fi
+  CMD="sudo rm go$ver.linux-amd64.tar.gz"
+  $CMD
+  echo "Command '$CMD' returned $?"
+  echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
 fi
-
-# Update package list
-sudo apt update
-
-# Install dependencies
-sudo apt install build-essential -y
-
-cd $HOME
-ver="1.19.2"
-wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
-rm "go$ver.linux-amd64.tar.gz"
-
-# Add Go to PATH for all users
-sudo echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/environment
-
-# Check
-if command -v go &> /dev/null; then
+  # Check
+CMD="command -v go"
+if $CMD &> /dev/null; then
   echo "Go installed successfully."
 else
-  echo "An error occurred while installing Go."
+  echo "An error occurred while installing GO."
 fi
