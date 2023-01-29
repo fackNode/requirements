@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Rust installation"
+
 if command -v rustc &> /dev/null; then
   echo "Rust is already installed."
 else
