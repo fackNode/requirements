@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+echo "GO installation"
+
 CMD="command -v go"
 if $CMD &> /dev/null; then
   echo "Go is already installed."
