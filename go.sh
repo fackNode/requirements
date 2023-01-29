@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 fmt=`tput setaf 45`
 end="\e[0m\n"
