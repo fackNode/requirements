@@ -22,7 +22,7 @@ else
 fi
 
 if command -v rustc &> /dev/null; then
-  echo -e "${fmt}\nrust installed successfully.${end}" && sleep 1
+  echo -e "${fmt}\nRust installed successfully.${end}" && sleep 1
 else
-  echo -e "${err}\nAn error occurred while installing docker-compose.${end}" && sleep 1
+  echo -e "${err}\nAn error occurred while installing Rust.${end}" && sleep 1
 fi
