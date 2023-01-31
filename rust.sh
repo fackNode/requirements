@@ -5,6 +5,8 @@ end="\e[0m\n"
 err="\e[31m"
 scss="\e[32m"
 
+echo -e "${fmt}\nRust installation${end}" && sleep 1
+
 if command -v rustc &> /dev/null; then
   echo -e "${fmt}\nRust is already installed.${end}" && sleep 1
 else
