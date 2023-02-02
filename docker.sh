@@ -9,7 +9,7 @@ echo -e "${fmt}\ndocker and docker-compose installation${end}" && sleep 1
 
 cd $HOME
 sudo apt update
-sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y < "/dev/null"
+sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common jq -y < "/dev/null"
 
 if ! docker --version; then
   . /etc/*-release
