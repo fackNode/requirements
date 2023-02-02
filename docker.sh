@@ -34,7 +34,7 @@ if ! docker-compose --version; then
   . $HOME/.bash_profile
 fi
 
-if docker-compose --version; then
+if docker-compose --version >/dev/null 2>&1; then
   echo -e "${fmt}\ndocker-compose installed successfully.${end}" && sleep 1
 else
   echo -e "${err}\An error occurred while installing docker-compose.${end}" && sleep 1
