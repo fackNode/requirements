@@ -47,11 +47,11 @@ else
   $CMD
   echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
   source $HOME/.bash_profile
-fi
-  # Check
-CMD="command -v go"
-if $CMD &> /dev/null; then
-  echo -e "${fmt}\nGo installed successfully.${end}" && sleep 1
-else
-  echo -e "${err}\nAn error occurred while installing GO.${end}" && sleep 1
+    # Check
+    CMD="command -v go"
+    if $CMD &> /dev/null; then
+      echo -e "${fmt}\nGo installed successfully.${end}" && sleep 1
+    else
+      echo -e "${err}\nAn error occurred while installing GO.${end}" && sleep 1
+    fi
 fi
