@@ -21,10 +21,13 @@ else
 
   # Add rust to PATH
   . $HOME/.cargo/env
+  
+  if command -v rustc &> /dev/null; then
+    echo -e "${fmt}\nRust installed successfully.${end}" && sleep 1
+  else
+    echo -e "${err}\nAn error occurred while installing Rust.${end}" && sleep 1
+  fi
+
 fi
 
-if command -v rustc &> /dev/null; then
-  echo -e "${fmt}\nRust installed successfully.${end}" && sleep 1
-else
-  echo -e "${err}\nAn error occurred while installing Rust.${end}" && sleep 1
-fi
+
