@@ -28,7 +28,7 @@ else
   fi
   
   cd $HOME
-  export ver="1.19.2"
+  export ver="1.21.6"
   CMD="sudo wget https://golang.org/dl/go$ver.linux-amd64.tar.gz"
   $CMD
   if [ $? -ne 0 ]; then
